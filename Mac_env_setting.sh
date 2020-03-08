@@ -1,4 +1,7 @@
-!/bin/bash
+#!/bin/bash
+## Mac env setting
+## Author: Leon.Lin    2020.03.08
+
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NO_COLOR='\033[0m' # No Color
@@ -22,6 +25,8 @@ brew install git
 brew install cmake
 brew install libomp
 brew install boost boost-python sdl2 swig wget
+brew install gdb
+wget -P ~ https://git.io/.gdbinit # enabling gdb extension: gdb-dashboard
 
 printf "${YELLOW}Install python3 and related libs${NO_COLOR}\n"
 brew install python3
@@ -39,6 +44,9 @@ brew install eigen
 printf "${YELLOW}Install vscode${NO_COLOR}\n"
 brew cask install visual-studio-code
 sudo spctl --master-disable
+
+
+
 
 printf "${YELLOW}Install opencv${NO_COLOR}\n"
 cd ~/
@@ -58,6 +66,9 @@ printf "usermail: ${RED}$usermail${NO_COLOR}\n"
 ssh-keygen -t rsa -b 4096 -C "${usermail}" 
 eval "$(ssh-agent -s)"
 ssh-add -K ~/.ssh/id_rsa
+
+
+
 
 
 #install julia
