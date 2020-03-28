@@ -49,6 +49,7 @@ sudo spctl --master-disable
 
 
 printf "${YELLOW}Install opencv${NO_COLOR}\n"
+brew install ffmpeg # for playing .avi using opencv
 cd ~/
 mkdir opencv && cd opencv
 git clone -b 3.4 https://github.com/opencv/opencv.git
