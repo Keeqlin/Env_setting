@@ -42,8 +42,9 @@ echo -e $password | sudo -S apt -y install build-essential pkg-config libopenbla
 # Numpy, scipy, pandas, matplotlib
 echo -e $password | sudo -S pip3 install numpy scipy pandas matplotlib
 
+
 OpenCV
-echo -e $password | sudo -S apt -y install libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev
+echo -e $password | sudo -S apt -y install libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev pkg-config
 echo -e $password | sudo -SE add-apt-repository “deb http://security.ubuntu.com/ubuntu xenial-security main”
 echo -e $password | sudo -S apt -y update
 echo -e $password | sudo -S apt -y install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
