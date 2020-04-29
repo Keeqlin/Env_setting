@@ -50,10 +50,11 @@ sudo spctl --master-disable
 
 printf "${YELLOW}Install opencv${NO_COLOR}\n"
 brew install ffmpeg # for playing .avi using opencv
+brew install gtk+   # sudo apt install libgtk2.0-dev and pkg-config on ubuntu 
 cd ~/
 mkdir opencv && cd opencv
-git clone -b 3.4 https://github.com/opencv/opencv.git
-git clone -b 3.4 https://github.com/opencv/opencv_contrib.git
+git clone https://github.com/opencv/opencv.git
+git clone https://github.com/opencv/opencv_contrib.git
 cd ~/opencv/opencv
 mkdir build && cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=~/opencv/opencv_contrib/modules/ ..
