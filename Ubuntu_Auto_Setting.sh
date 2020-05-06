@@ -73,7 +73,7 @@ git clone https://github.com/PointCloudLibrary/pcl.git
 
 echo -e $password | sudo -S apt-get -y update  
 echo -e $password | sudo -S apt-get -y install git build-essential linux-libc-dev  
-echo -e $password | sudo -S apt-get -y install cmake cmake-gui   
+echo -e $password | sudo -S apt-get -y install cmake
 echo -e $password | sudo -S apt-get -y install libusb-1.0-0-dev libusb-dev libudev-dev  
 echo -e $password | sudo -S apt-get -y install mpi-default-dev openmpi-bin openmpi-common    
 echo -e $password | sudo -S apt-get -y install libflann1.8 libflann-dev  
