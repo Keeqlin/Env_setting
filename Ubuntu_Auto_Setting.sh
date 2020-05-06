@@ -66,6 +66,36 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_E
 make -j7 
 echo -e $password | sudo -S make install
 
+
+# PCL
+cd ~/
+git clone https://github.com/PointCloudLibrary/pcl.git
+
+echo -e $password | sudo -S apt-get -y update  
+echo -e $password | sudo -S apt-get -y install git build-essential linux-libc-dev  
+echo -e $password | sudo -S apt-get -y install cmake cmake-gui   
+echo -e $password | sudo -S apt-get -y install libusb-1.0-0-dev libusb-dev libudev-dev  
+echo -e $password | sudo -S apt-get -y install mpi-default-dev openmpi-bin openmpi-common    
+echo -e $password | sudo -S apt-get -y install libflann1.8 libflann-dev  
+echo -e $password | sudo -S apt-get -y install libeigen3-dev  
+echo -e $password | sudo -S apt-get -y install libboost-all-dev  
+echo -e $password | sudo -S apt-get -y install libvtk5.10-qt4 libvtk5.10 libvtk5-dev  
+echo -e $password | sudo -S apt-get -y install libqhull* libgtest-dev  
+echo -e $password | sudo -S apt-get -y install freeglut3-dev pkg-config  
+echo -e $password | sudo -S apt-get -y install libxmu-dev libxi-dev   
+echo -e $password | sudo -S apt-get -y install mono-complete  
+echo -e $password | sudo -S apt-get -y install qt-sdk openjdk-8-jdk openjdk-8-jre  
+cd ~/pcl
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
+           -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON \
+           -DCMAKE_INSTALL_PREFIX=/usr ..
+make -j8  
+sudo make install 
+cd ~/
+
+
 # TensorFlow
 echo -e $password | sudo -S pip3 install --upgrade tensorflow
 
