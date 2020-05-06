@@ -36,6 +36,10 @@ echo -e $password | sudo -S snap install vlc --classic
 # eigen3
 echo -e $password | sudo -S apt -y install libeigen3-dev
 
+# ssh
+echo -e $password | sudo -S apt -y install openssh-server
+ssh-keygen -t rsa -b 4096 -C "leonlin@gallopwave.com"
+
 # Python3
 echo -e $password | sudo -S apt install -y python3-pip python3-dev
 echo -e $password | sudo -S apt -y install build-essential pkg-config libopenblas-dev liblapack-dev
@@ -43,7 +47,8 @@ echo -e $password | sudo -S apt -y install build-essential pkg-config libopenbla
 echo -e $password | sudo -S pip3 install numpy scipy pandas matplotlib
 
 
-OpenCV
+
+# OpenCV
 echo -e $password | sudo -S apt -y install libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev pkg-config
 echo -e $password | sudo -SE add-apt-repository “deb http://security.ubuntu.com/ubuntu xenial-security main”
 echo -e $password | sudo -S apt -y update
@@ -51,8 +56,8 @@ echo -e $password | sudo -S apt -y install python-dev python-numpy libtbb2 libtb
 cd ~/
 mkdir ~/opencv
 cd ~/opencv
-git clone -b 3.4 https://github.com/opencv/opencv.git
-git clone -b 3.4 https://github.com/opencv/opencv_contrib.git
+git clone -b https://github.com/opencv/opencv.git
+git clone -b https://github.com/opencv/opencv_contrib.git
 cd ~/opencv
 mkdir ~/opencv/build
 cd ~/opencv/build
