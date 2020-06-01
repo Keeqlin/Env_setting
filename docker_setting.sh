@@ -10,3 +10,5 @@ docker start ${container_name} -i
 #multiple terminals of docker container
 docker exec -it ${container_name} bash
 
+apt-get install software-properties-common
+
