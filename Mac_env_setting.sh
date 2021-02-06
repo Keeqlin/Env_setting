@@ -19,6 +19,16 @@ echo "$PASSWD" | sudo -S systemsetup -getremotelogin
 printf "${YELLOW}Install Homebrew${NO_COLOR}\n"
 echo "/n" |/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+printf "${YELLOW}Install vscode${NO_COLOR}\n"
+brew install --cask visual-studio-code
+
+printf "${YELLOW}Enter usermail for generating ssh key${NO_COLOR}\n"
+read -s usermail
+printf "usermail: ${RED}$usermail${NO_COLOR}\n"
+ssh-keygen -t rsa -b 4096 -C "${usermail}" 
+# eval "$(ssh-agent -s)"
+# ssh-add -K ~/.ssh/id_rsa
+
 printf "${YELLOW}Install Necessary library${NO_COLOR}\n"
 brew install pkg-config
 brew install git
@@ -41,36 +51,25 @@ pip3 install ipython
 printf "${YELLOW}Install Eigen${NO_COLOR}\n"
 brew install eigen
 
-printf "${YELLOW}Install vscode${NO_COLOR}\n"
-brew cask install visual-studio-code
-sudo spctl --master-disable
-
-
-
 
 printf "${YELLOW}Install opencv${NO_COLOR}\n"
 brew install ffmpeg # for playing .avi using opencv
 brew install gtk+   # sudo apt install libgtk2.0-dev and pkg-config on ubuntu 
 cp /usr/local/opt/libffi/lib/libffi.7.dylib /usr/local/opt/libffi/lib/libffi.6.dylib
 cd ~/
-mkdir opencv && cd opencv
+mkdir opencv
+cd opencv
 git clone https://github.com/opencv/opencv.git
 git clone https://github.com/opencv/opencv_contrib.git
 cd ~/opencv/opencv
-mkdir build && cd build
+mkdir build
+cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=~/opencv/opencv_contrib/modules/ ../
 make -j7
 make install
 
-
-printf "${YELLOW}Enter usermail for generating ssh key${NO_COLOR}\n"
-read -s usermail
-printf "usermail: ${RED}$usermail${NO_COLOR}\n"
-ssh-keygen -t rsa -b 4096 -C "${usermail}" 
-eval "$(ssh-agent -s)"
-ssh-add -K ~/.ssh/id_rsa
-
-
+# Allow Mac to install any 3rd party libraries
+sudo spctl --master-disable
 
 
 
